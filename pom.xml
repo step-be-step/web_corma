@@ -10,7 +10,7 @@
     </parent>
     <groupId>ru.bliz</groupId>
     <artifactId>web_corma</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>web_corma</name>
     <description>web_corma</description>
     <properties>
