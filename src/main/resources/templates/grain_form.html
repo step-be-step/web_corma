@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список концентратов</title>
+    <title>Форма добавления зерносмесь</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!-- Bootstrap CSS -->
@@ -55,30 +55,35 @@
         </div>
     </nav>
 
-    <div><h1>Список концентратов</h1></div>
-    <div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>Наименование</th>
-                <th>Цена за кг</th>
-                <th>Цена за мешок(25 кг)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <th:block th:each="concentrates : ${listConcentrates}">
-                <tr>
-                    <td>[[${concentrates.id}]]</td>
-                    <td>[[${concentrates.name}]]</td>
-                    <td>[[${concentrates.priceKg}]]</td>
-                    <td>[[${concentrates.price25Kg}]]</td>
-                </tr>
-            </th:block>
-            </tbody>
-        </table>
-    </div>
+    <div><h1>Добавить зерносмесь</h1></div>
 
+    <form th:action="@{/grains/save}" th:object="${grain}" method="post"
+          style="max-width: 600px; margin: 0 auto">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Наименование: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Цена за кг: </label>
+                <div class="col-sm-8">
+                    <input type="number"  step="0.1" th:field="*{priceKg}" class="form-control" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Цена за мешок(25 кг): </label>
+                <div class="col-sm-8">
+                    <input type="number"  step="0.1" th:field="*{price25Kg}" class="form-control" required/>
+                </div>
+            </div>
+            <div class="text-center p3">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
