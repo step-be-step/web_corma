@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список продаж</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container text-center">
+    <div><h1>Список продаж</h1></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Наименование</th>
+                <th>Наименование концентрата</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="sale : ${listSales}">
+                <tr>
+                    <td>[[${sale.id}]]</td>
+                    <td>[[${sale.name}]]</td>
+                    <td>[[${sale.concentrate.name}]]</td>
+                    <td>
+                        <a th:href="@{'/sales/edit/' + ${sale.id}}">Edit</a>
+                        &nbsp;
+                        <a th:href="@{'/sales/delete/' + ${sale.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
