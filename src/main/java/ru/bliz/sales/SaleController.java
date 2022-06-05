@@ -21,7 +21,7 @@ public class SaleController {
     private ConcentrateRepo concentrateRepo;
 
     @GetMapping("/sales/new")
-    public String showNewProductFrom(Model model) {
+    public String showNewSaleFrom(Model model) {
         List<Concentrate> listConcentrates = concentrateRepo.findAll();
 
         model.addAttribute("sale", new Sale());
@@ -31,14 +31,14 @@ public class SaleController {
     }
 
     @PostMapping("/sales/save")
-    public String saveProduct(Sale sale) {
+    public String saveSale(Sale sale) {
         saleRepo.save(sale);
 
         return "redirect:/sales";
     }
 
     @GetMapping("/sales")
-    public String listProducts(Model model) {
+    public String listSales(Model model) {
         List<Sale> listSales = saleRepo.findAll();
         model.addAttribute("listSales", listSales);
 
@@ -46,7 +46,7 @@ public class SaleController {
     }
 
     @GetMapping("/sales/edit/{id}")
-    public String showEditProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showEditSaleForm(@PathVariable("id") Integer id, Model model) {
         Sale sale = saleRepo.findById(id).get();
         model.addAttribute("sale", sale);
 
@@ -58,7 +58,7 @@ public class SaleController {
     }
 
     @GetMapping("/sales/delete/{id}")
-    public String showDeleteProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showDeleteSaleForm(@PathVariable("id") Integer id, Model model) {
         saleRepo.deleteById(id);
 
         return "redirect:/sales";

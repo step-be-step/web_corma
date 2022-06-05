@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список зерносмесей</title>
+    <title>Комбикорм Т.Е</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!-- Bootstrap CSS -->
@@ -89,7 +89,7 @@
         </div>
     </nav>
 
-    <div><h1>Список зерносмесей</h1></div>
+    <div><h1>Список корма для еды и кошек</h1></div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -102,16 +102,16 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="grains : ${listGrains}">
+            <th:block th:each="foods : ${listFoods}">
                 <tr>
-                    <td>[[${grains.id}]]</td>
-                    <td>[[${grains.name}]]</td>
-                    <td>[[${grains.priceKg}]]</td>
-                    <td>[[${grains.price25Kg}]]</td>
+                    <td>[[${foods.id}]]</td>
+                    <td>[[${foods.name}]]</td>
+                    <td>[[${foods.priceKg}]]</td>
+                    <td>[[${foods.price25Kg}]]</td>
                     <td>
-                        <a th:href="@{'/grains/edit/' + ${grains.id}}">Edit</a>
+                        <a th:href="@{'/food_for_cat_and_dog/edit/' + ${foods.id}}">Edit</a>
                         &nbsp;
-                        <a th:href="@{'/grains/delete/' + ${grains.id}}">Delete</a>
+                        <a th:href="@{'/food_for_cat_and_dog/delete/' + ${foods.id}}">Delete</a>
                     </td>
                 </tr>
             </th:block>

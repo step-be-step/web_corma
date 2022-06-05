@@ -18,7 +18,7 @@ public class GrainController {
     private GrainRepo repo;
 
     @GetMapping("/grains")
-    public String listCategories(Model model) {
+    public String listGrain(Model model) {
         List<Grain> listGrains = repo.findAll();
         model.addAttribute("listGrains", listGrains);
 
@@ -26,21 +26,21 @@ public class GrainController {
     }
 
     @GetMapping("/grains/new")
-    public String showCategoryNewForm(Model model) {
+    public String showGrainNewForm(Model model) {
         model.addAttribute("grain", new Grain());
 
         return "grain_form";
     }
 
     @PostMapping("/grains/save")
-    public String saveCategory(Grain concentrate) {
+    public String saveGrain(Grain concentrate) {
         repo.save(concentrate);
 
         return "redirect:/grains";
     }
 
     @GetMapping("/grains/edit/{id}")
-    public String showEditProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showEditGrainForm(@PathVariable("id") Integer id, Model model) {
         Grain grain = repo.findById(id).get();
         repo.deleteById(id); // по возможности исправить
         model.addAttribute("grain", grain);
@@ -49,7 +49,7 @@ public class GrainController {
     }
 
     @GetMapping("/grains/delete/{id}")
-    public String showDeleteProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showDeleteGrainForm(@PathVariable("id") Integer id, Model model) {
         repo.deleteById(id);
 
         return "redirect:/grains";

@@ -17,7 +17,7 @@ public class CombicormController {
     private CombicormRepo repo;
 
     @GetMapping("/combicorms")
-    public String listCategories(Model model) {
+    public String listCombicorm(Model model) {
         List<Combicorm> listCombicorms = repo.findAll();
         model.addAttribute("listCombicorms", listCombicorms);
 
@@ -25,21 +25,21 @@ public class CombicormController {
     }
 
     @GetMapping("/combicorms/new")
-    public String showCategoryNewForm(Model model) {
+    public String showCombicormNewForm(Model model) {
         model.addAttribute("combicorm", new Combicorm());
 
         return "combicorm_form";
     }
 
     @PostMapping("/combicorms/save")
-    public String saveCategory(Combicorm concentrate) {
+    public String saveCombicorm(Combicorm concentrate) {
         repo.save(concentrate);
 
         return "redirect:/combicorms";
     }
 
     @GetMapping("/combicorms/edit/{id}")
-    public String showEditProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showEditCombicormForm(@PathVariable("id") Integer id, Model model) {
         Combicorm combicorm = repo.findById(id).get();
         repo.deleteById(id); // по возможности исправить
         model.addAttribute("combicorm", combicorm);
@@ -48,7 +48,7 @@ public class CombicormController {
     }
 
     @GetMapping("/combicorms/delete/{id}")
-    public String showDeleteProductForm(@PathVariable("id") Integer id) {
+    public String showDeleteCombicormForm(@PathVariable("id") Integer id) {
         repo.deleteById(id);
 
         return "redirect:/combicorms";

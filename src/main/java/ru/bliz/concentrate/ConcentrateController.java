@@ -39,7 +39,7 @@ public class ConcentrateController {
     }
 
     @GetMapping("/concentrates/edit/{id}")
-    public String showEditProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showEditCategoryForm(@PathVariable("id") Integer id, Model model) {
         Concentrate concentrate = repo.findById(id).get();
         repo.deleteById(id); // по возможности исправить
         model.addAttribute("concentrate", concentrate);
@@ -48,7 +48,7 @@ public class ConcentrateController {
     }
 
     @GetMapping("/concentrates/delete/{id}")
-    public String showDeleteProductForm(@PathVariable("id") Integer id, Model model) {
+    public String showDeleteCategoryForm(@PathVariable("id") Integer id, Model model) {
         repo.deleteById(id);
 
         return "redirect:/concentrates";
