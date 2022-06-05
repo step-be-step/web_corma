@@ -64,6 +64,7 @@
                 <th>Наименование</th>
                 <th>Цена за кг</th>
                 <th>Цена за мешок(25 кг)</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -73,6 +74,11 @@
                     <td>[[${concentrates.name}]]</td>
                     <td>[[${concentrates.priceKg}]]</td>
                     <td>[[${concentrates.price25Kg}]]</td>
+                    <td>
+                        <a th:href="@{'/concentrates/edit/' + ${concentrates.id}}">Edit</a>
+                        &nbsp;
+                        <a th:href="@{'/concentrates/delete/' + ${concentrates.id}}">Delete</a>
+                    </td>
                 </tr>
             </th:block>
             </tbody>
