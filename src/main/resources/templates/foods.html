@@ -91,6 +91,12 @@
     </nav>
 
     <div><h1>Список корма для еды и кошек</h1></div>
+
+    <form th:action="@{/food_for_cat_and_dog}" method="get">
+        <input type="text" name="filter" th:value="${filter}" placeholder="Поиск по наименованию" size="50">
+        <button type="submit" class="btn btn-primary mb-2">Поиск</button>
+    </form>
+
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">

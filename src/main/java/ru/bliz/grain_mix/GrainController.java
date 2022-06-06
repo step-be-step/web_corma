@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.bliz.concentrate.Concentrate;
+import ru.bliz.other.OtherKorm;
 import ru.bliz.sales.Sale;
 
 import java.util.List;
@@ -18,8 +19,16 @@ public class GrainController {
     private GrainRepo repo;
 
     @GetMapping("/grains")
-    public String listGrain(Model model) {
-        List<Grain> listGrains = repo.findAll();
+    public String listGrain(Model model, String filter) {
+        Iterable<Grain> listGrains;
+
+        if (filter != null && !filter.isEmpty()) {
+            listGrains = repo.findByName(filter);
+        } else {
+            listGrains = repo.findAll();
+        }
+
+        model.addAttribute("filter", filter);
         model.addAttribute("listGrains", listGrains);
 
         return "grains";

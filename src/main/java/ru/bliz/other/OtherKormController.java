@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.bliz.sales.Sale;
 
 import java.util.List;
 
@@ -16,8 +17,16 @@ public class OtherKormController {
     private OtherKormRepo repo;
 
     @GetMapping("/others")
-    public String listCategories(Model model) {
-        List<OtherKorm> listOthers = repo.findAll();
+    public String listCategories(Model model, String filter) {
+        Iterable<OtherKorm> listOthers;
+
+        if (filter != null && !filter.isEmpty()) {
+            listOthers = repo.findByName(filter);
+        } else {
+            listOthers = repo.findAll();
+        }
+
+        model.addAttribute("filter", filter);
         model.addAttribute("listOthers", listOthers);
 
         return "others";

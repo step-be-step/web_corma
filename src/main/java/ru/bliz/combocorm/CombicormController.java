@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.bliz.other.OtherKorm;
 
 import java.util.List;
 
@@ -17,8 +18,16 @@ public class CombicormController {
     private CombicormRepo repo;
 
     @GetMapping("/combicorms")
-    public String listCombicorm(Model model) {
-        List<Combicorm> listCombicorms = repo.findAll();
+    public String listCombicorm(Model model, String filter) {
+        Iterable<Combicorm> listCombicorms;
+
+        if (filter != null && !filter.isEmpty()) {
+            listCombicorms = repo.findByName(filter);
+        } else {
+            listCombicorms = repo.findAll();
+        }
+
+        model.addAttribute("filter", filter);
         model.addAttribute("listCombicorms", listCombicorms);
 
         return "combicorms";

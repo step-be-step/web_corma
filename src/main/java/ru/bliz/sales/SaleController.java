@@ -38,8 +38,17 @@ public class SaleController {
     }
 
     @GetMapping("/sales")
-    public String listSales(Model model) {
-        List<Sale> listSales = saleRepo.findAll();
+    public String listSales(Model model, String filter) {
+
+        Iterable<Sale> listSales;
+
+        if (filter != null && !filter.isEmpty()) {
+            listSales = saleRepo.findByName(filter);
+        } else {
+            listSales = saleRepo.findAll();
+        }
+
+        model.addAttribute("filter", filter);
         model.addAttribute("listSales", listSales);
 
         return "sales";

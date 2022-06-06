@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.bliz.other.OtherKorm;
 
 import java.util.List;
 
@@ -16,8 +17,16 @@ public class FoodForCatAndDogController {
     private FoodForCatAndDogRepo repo;
 
     @GetMapping("/food_for_cat_and_dog")
-    public String listFoodForCatAndDog(Model model) {
-        List<FoodForCatAndDog> listFoods = repo.findAll();
+    public String listFoodForCatAndDog(Model model, String filter) {
+        Iterable<FoodForCatAndDog> listFoods;
+
+        if (filter != null && !filter.isEmpty()) {
+            listFoods = repo.findByName(filter);
+        } else {
+            listFoods = repo.findAll();
+        }
+
+        model.addAttribute("filter", filter);
         model.addAttribute("listFoods", listFoods);
 
         return "foods";
