@@ -114,6 +114,50 @@
                     </select>
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Прочее: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{otherKorm}" class="form-control">
+                        <th:block th:each="ot : ${listOther}">
+                            <option th:text="${ot.name}" th:value="${ot.id}"/>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Комбикорм: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{combicorm}" class="form-control">
+                        <th:block th:each="com : ${listCombicorms}">
+                            <option th:text="${com.name}" th:value="${com.id}"/>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Корма кошек и собак: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{food}" class="form-control">
+                        <th:block th:each="f : ${listFoods}">
+                            <option th:text="${f.name}" th:value="${f.id}"/>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Зерносмеси: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{grain}" class="form-control">
+                        <th:block th:each="g : ${listGrain}">
+                            <option th:text="${g.name}" th:value="${g.id}"/>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
             <div class="text-center p-3">
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </div>
