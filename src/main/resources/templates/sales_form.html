@@ -107,9 +107,9 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4">Конценрат: </label>
                 <div class="col-sm-8">
-                    <select th:field="*{concentrate}" class="form-control">
+                    <select th:field="*{concentrate}" class="form-control" >
                         <th:block th:each="can : ${listConcentrates}">
-                            <option th:text="${can.name}" th:value="${can.id}"/>
+                            <option th:text="${can.name}" th:value="${can.id}"></option>
                         </th:block>
                     </select>
                 </div>

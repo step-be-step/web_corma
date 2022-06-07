@@ -2,7 +2,7 @@
 <html xmlns:th="www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список продаж</title>
+    <title>Список привоза</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!--    icon-->
@@ -92,7 +92,7 @@
         </div>
     </nav>
 
-    <div><h1>Список продаж</h1></div>
+    <div><h1>Список привезёного </h1></div>
 
     <form th:action="@{/sales}" method="get">
         <input type="text" name="filter" th:value="${filter}" placeholder="Поиск по наименованию" size="50">
@@ -123,6 +123,7 @@
                     <td>[[${sale.combicorm.name}]]</td>
                     <td>[[${sale.food.name}]]</td>
                     <td>[[${sale.grain.name}]]</td>
+                    <td>{{autor}}</td>
                     <td>
                         <a th:href="@{'/sales/edit/' + ${sale.id}}"><i class="fa fa-edit"></i></a>
                         <a th:href="@{'/sales/delete/' + ${sale.id}}"><i class="fa fa-remove"></i></a>
