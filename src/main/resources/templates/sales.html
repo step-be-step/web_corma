@@ -87,8 +87,11 @@
                         <a class="dropdown-item" th:href="@{/others/new}">Добавить корм</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">Сотрудники</a>
+                </li>
             </ul>
-            <div class="navbar-text mr-3">Please, login</div>
+            <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
         </div>
     </nav>
 
@@ -123,7 +126,7 @@
                     <td>[[${sale.combicorm.name}]]</td>
                     <td>[[${sale.food.name}]]</td>
                     <td>[[${sale.grain.name}]]</td>
-                    <td>{{autor}}</td>
+
                     <td>
                         <a th:href="@{'/sales/edit/' + ${sale.id}}"><i class="fa fa-edit"></i></a>
                         <a th:href="@{'/sales/delete/' + ${sale.id}}"><i class="fa fa-remove"></i></a>

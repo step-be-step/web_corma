@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="www.thymeleaf.org" lang="ru">
+<html xmlns:th="www.thymeleaf.org" lang="ru" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить новую продажу</title>
+    <title>Добавить новую привезёное</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!-- Bootstrap CSS -->
@@ -25,7 +26,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSeal" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        Продажи
+                        Привезёное
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
                         <a class="dropdown-item" th:href="@{/sales}">Список продаж </a>
@@ -85,20 +86,23 @@
                         <a class="dropdown-item" th:href="@{/others/new}">Добавить корм</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">Сотрудники</a>
+                </li>
             </ul>
-            <div class="navbar-text mr-3">Please, login</div>
+            <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
         </div>
     </nav>
 
-    <div th:if="${sale.id==null}"><h1>Добавить продажу</h1></div>
-    <div th:unless="${sale.id==null}"><h1>Редактировать продажу</h1></div>
+    <div th:if="${sale.id==null}"><h1>Добавить привезёное</h1></div>
+    <div th:unless="${sale.id==null}"><h1>Редактировать привезёное</h1></div>
 
     <form th:action="@{/sales/save}" th:object="${sale}" method="post"
           style="max-width: 600px; margin: 0 auto">
         <input type="hidden" th:field="*{id}" th:value="${sale.id}"/>
         <div class="m-3">
             <div class="form-group row">
-                <label class="col-form-label col-sm-4">Наименование продажи: </label>
+                <label class="col-form-label col-sm-4">Наименование : </label>
                 <div class="col-sm-8">
                     <input type="text" th:field="*{name}" class="form-control" required/>
                 </div>
@@ -107,7 +111,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4">Конценрат: </label>
                 <div class="col-sm-8">
-                    <select th:field="*{concentrate}" class="form-control" >
+                    <select th:field="*{concentrate}" class="form-control" required>
                         <th:block th:each="can : ${listConcentrates}">
                             <option th:text="${can.name}" th:value="${can.id}"></option>
                         </th:block>
@@ -118,7 +122,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4">Прочее: </label>
                 <div class="col-sm-8">
-                    <select th:field="*{otherKorm}" class="form-control">
+                    <select th:field="*{otherKorm}" class="form-control" required>
                         <th:block th:each="ot : ${listOther}">
                             <option th:text="${ot.name}" th:value="${ot.id}"/>
                         </th:block>
@@ -129,7 +133,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4">Комбикорм: </label>
                 <div class="col-sm-8">
-                    <select th:field="*{combicorm}" class="form-control">
+                    <select th:field="*{combicorm}" class="form-control" required>
                         <th:block th:each="com : ${listCombicorms}">
                             <option th:text="${com.name}" th:value="${com.id}"/>
                         </th:block>
@@ -140,7 +144,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4">Корма кошек и собак: </label>
                 <div class="col-sm-8">
-                    <select th:field="*{food}" class="form-control">
+                    <select th:field="*{food}" class="form-control" required>
                         <th:block th:each="f : ${listFoods}">
                             <option th:text="${f.name}" th:value="${f.id}"/>
                         </th:block>
@@ -151,7 +155,7 @@
             <div class="form-group row">
                 <label class="col-form-label col-sm-4">Зерносмеси: </label>
                 <div class="col-sm-8">
-                    <select th:field="*{grain}" class="form-control">
+                    <select th:field="*{grain}" class="form-control" required>
                         <th:block th:each="g : ${listGrain}">
                             <option th:text="${g.name}" th:value="${g.id}"/>
                         </th:block>
