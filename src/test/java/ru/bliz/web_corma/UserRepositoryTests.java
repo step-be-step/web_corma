@@ -18,6 +18,9 @@ import java.util.Collections;
 @Rollback(false)
 public class UserRepositoryTests {
 
+	@Autowired
+	private UserRepo userRepo;
+
 	@Test
 	public void testCreateUser() {
 		User user = new User();
@@ -25,6 +28,7 @@ public class UserRepositoryTests {
 		user.setPassword("лучезарный");
 		user.setActive(true);
 		user.setRoles(Collections.singleton(Role.ADMIN));
+
+		userRepo.save(user);
 	}
-	
 }
