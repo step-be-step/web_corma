@@ -31,8 +31,11 @@ public class UserController {
 
     @GetMapping("/delete/{id}")
     public String showDeleteUserForm(@PathVariable("id") Integer id, Model model) {
-        userRepo.deleteById(id);
-
+        if (id == 1) {
+            System.out.println("");
+        } else {
+            userRepo.deleteById(id);
+        }
         return "redirect:/user";
     }
 }
