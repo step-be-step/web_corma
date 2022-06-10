@@ -28,7 +28,7 @@
                         Привезённое
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/sales}">Список продаж </a>
+                        <a class="dropdown-item" th:href="@{/sales}">Список привезённое </a>
                         <a class="dropdown-item" th:href="@{/sales/new}">Добавить список </a>
                     </div>
                 </li>
@@ -102,11 +102,62 @@
     </nav>
 
 
-    <h5>Hello, guest</h5>
-    <div>Hey there! <span th:text="${user?.username}"></span></div>
-
 </div>
 
+<section>
+    <div class="container">
+        <h2 class="text-center">ВАЖНО</h2>
+        <p>При входе в систему возможен сбой бутстрапа. Для того чтобы исправить вернуть на предыдущую страницу и войти в систему снова.</p>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <h2 class="text-center">Справка продавца</h2>
+                    <p class="text-center">Справка расчитана на людей умеющих читать и вникать в смысл прочитоного.</p>
+                    <p>Для того чтобы добавить концентрат, зерносмесь, комбикорм, корм для котов и собак или прочего
+                        нужно перейти на <b>соответствующую вкладку</b> и выбрать <b>"Добавить ..."</b> после нажать <b>сохранить</b>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div >
+                    <img  th:src="@{/img/1.png}" style="max-width: 1000px; margin: 0 auto">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div >
+                    <img  th:src="@{/img/2.png}" style="max-width: 1000px; margin: 0 auto">
+                </div>
+            </div>
+        </div>
+        <p>Послле сохранения вас перекинет на страницу добавляемого корма</p>
+        <div >
+            <img  th:src="@{/img/3.png}" style="max-width: 1000px; margin: 0 auto">
+        </div>
+        <p class="text-center"><b>Удаление, редактирование, поиск.</b></p>
+        <p>Для удаления или редактирования выберите соответствующие иконки. При редактирование <b>обязательно</b> нажмите <b>сохранить</b></p>
+        <img  th:src="@{/img/4.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+        <img  th:src="@{/img/5.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+
+        <p class="text-center"><b>Таблица привезёное. Добавление.</b></p>
+        <p>Необходимо выбрать нужные поля, невыбранное не допускается</p>
+        <img  th:src="@{/img/6.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+
+        <h2 class="text-center">Справка директора</h2>
+        <p>Для добавления сотрудника перейдите на вкладку <b>"Сотрудники"</b></p>
+        <img  th:src="@{/img/7.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+        <p class="text-center"><b>Регистрация.</b></p>
+        <p>Для регистрации нажмите на...</p>
+        <img  th:src="@{/img/9.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+        <p>Полсле придумайте имя и пароль. Имя не должно совпадать с тем что имеесть в БД</p>
+        <img  th:src="@{/img/8.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+        <p>Для удаления нажмите </p>
+        <img  th:src="@{/img/10.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+    </div>
+
+</section>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -28,7 +28,7 @@
                         Привезённое
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/sales}">Список продаж </a>
+                        <a class="dropdown-item" th:href="@{/sales}">Список привезённое </a>
                         <a class="dropdown-item" th:href="@{/sales/new}">Добавить список </a>
                     </div>
                 </li>
@@ -93,7 +93,8 @@
         </div>
     </nav>
 
-    <div><h1>Прочее</h1></div>
+    <div th:if="${other.id==null}"><h1>Добавить прочее</h1></div>
+    <div th:unless="${other.id==null}"><h1>Редактировать прочее</h1></div>
 
     <form th:action="@{/others/save}" th:object="${other}" method="post"
           style="max-width: 600px; margin: 0 auto">

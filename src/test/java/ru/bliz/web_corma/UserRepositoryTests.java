@@ -18,17 +18,17 @@ import java.util.Collections;
 @Rollback(false)
 public class UserRepositoryTests {
 
-	@Autowired
-	private UserRepo userRepo;
+    @Autowired
+    private UserRepo userRepo;
 
-	@Test
-	public void testCreateUser() {
-		User user = new User();
-		user.setUsername("лучезарный");
-		user.setPassword("лучезарный");
-		user.setActive(true);
-		user.setRoles(Collections.singleton(Role.ADMIN));
+    @Test
+    public void testCreateUser() {
+        User user = new User();
+        user.setUsername("лучезарный");
+        user.setPassword("лучезарный");
+        user.setActive(true);
+        user.setRoles(Collections.singleton(Role.ADMIN));
 
-		userRepo.save(user);
-	}
+        userRepo.save(user);
+    }
 }

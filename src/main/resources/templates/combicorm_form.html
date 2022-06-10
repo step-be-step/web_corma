@@ -25,10 +25,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSeal" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        Продажи
+                        Привезённое
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/sales}">Список продаж </a>
+                        <a class="dropdown-item" th:href="@{/sales}">Список привезённое </a>
                         <a class="dropdown-item" th:href="@{/sales/new}">Добавить список </a>
                     </div>
                 </li>
@@ -95,7 +95,8 @@
         </div>
     </nav>
 
-    <div><h1>Добавить комбикорм</h1></div>
+    <div th:if="${combicorm.id==null}"><h1>Добавить комбикорм</h1></div>
+    <div th:unless="${combicorm.id==null}"><h1>Редактировать комбикорм</h1></div>
 
     <form th:action="@{/combicorms/save}" th:object="${combicorm}" method="post"
           style="max-width: 600px; margin: 0 auto">
