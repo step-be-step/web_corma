@@ -19,6 +19,10 @@ public class Everything {
 
     private String name;
 
+    private String deadline;
+
+    private String data;
+
     @ManyToOne
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;

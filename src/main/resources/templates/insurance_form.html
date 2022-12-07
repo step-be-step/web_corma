@@ -25,11 +25,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSeal" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        Привезённое
+                        Заказы
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/sales}">Список привезённое </a>
-                        <a class="dropdown-item" th:href="@{/sales/new}">Добавить список </a>
+                        <a class="dropdown-item" th:href="@{/everythings}">Список заказов </a>
+                        <a class="dropdown-item" th:href="@{/everythings/new}">Добавить заказы </a>
                     </div>
                 </li>
 
@@ -44,6 +44,17 @@
                     </div>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarBuyers" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Клиенты
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarBuyers">
+                        <a class="dropdown-item" th:href="@{/buyers}">Список клиентов</a>
+                        <a class="dropdown-item" th:href="@{/buyers/new}">Добавить клиента</a>
+                    </div>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/user">Сотрудники</a>
                 </li>
@@ -51,7 +62,14 @@
             <div>
                 <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
             </div>
+            <div class="col-sm-1">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="alert alert-warning" value="Выйти"/>
+                </form>
+            </div>
+
         </div>
+
     </nav>
 
     <div th:if="${insurance.id==null}"><h1>Добавить страхование</h1></div>
