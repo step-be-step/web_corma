@@ -8,7 +8,6 @@ public class WebCormaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebCormaApplication.class, args);
-        System.out.println("test check");
     }
 
 }

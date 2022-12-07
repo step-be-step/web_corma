@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Комбикорма Р.Е</title>
+    <title>Бюро</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!-- Bootstrap CSS -->
@@ -14,7 +14,7 @@
 <body>
 <div class="container text-center">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/">Комбикорм Т.Е</a>
+        <a class="navbar-brand" href="/">Бюро</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,48 +43,7 @@
                         <a class="dropdown-item" th:href="@{/concentrates/new}">Добавить концентрат</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarGrainMix" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Зерносмесь
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarGrainMix">
-                        <a class="dropdown-item" th:href="@{/grains}">Список зерносмесей</a>
-                        <a class="dropdown-item" th:href="@{/grains/new}">Добавить зерносмесь</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarCombicorm" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Комбикорм
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarCombicorm">
-                        <a class="dropdown-item" th:href="@{/combicorms}">Список комбикорма</a>
-                        <a class="dropdown-item" th:href="@{/combicorms/new}">Добавить комбикорм</a>
-                    </div>
-                </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarCatDog" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Комбикорм для питомцев
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarCatDog">
-                        <a class="dropdown-item" th:href="@{/food_for_cat_and_dog}">Список кормов для собак и котов</a>
-                        <a class="dropdown-item" th:href="@{/food_for_cat_and_dog/new}">Добавить корм</a>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarOther" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Прочее
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarOther">
-                        <a class="dropdown-item" th:href="@{/others}">Список прочего</a>
-                        <a class="dropdown-item" th:href="@{/others/new}">Добавить корм</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user">Сотрудники</a>
                 </li>
@@ -107,54 +66,8 @@
 <section>
     <div class="container">
         <h2 class="text-center">ВАЖНО</h2>
-        <p>При входе в систему возможен сбой бутстрапа. Для того чтобы исправить вернуть на предыдущую страницу и войти в систему снова.</p>
-        <div class="row">
-            <div class="col-lg-12">
-                <div>
-                    <h2 class="text-center">Справка продавца</h2>
-                    <p class="text-center">Справка расчитана на людей умеющих читать и вникать в смысл прочитоного.</p>
-                    <p>Для того чтобы добавить концентрат, зерносмесь, комбикорм, корм для котов и собак или прочего
-                        нужно перейти на <b>соответствующую вкладку</b> и выбрать <b>"Добавить ..."</b> после нажать <b>сохранить</b>.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div >
-                    <img  th:src="@{/img/1.png}" style="max-width: 1000px; margin: 0 auto">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div >
-                    <img  th:src="@{/img/2.png}" style="max-width: 1000px; margin: 0 auto">
-                </div>
-            </div>
-        </div>
-        <p>Послле сохранения вас перекинет на страницу добавляемого корма</p>
-        <div >
-            <img  th:src="@{/img/3.png}" style="max-width: 1000px; margin: 0 auto">
-        </div>
-        <p class="text-center"><b>Удаление, редактирование, поиск.</b></p>
-        <p>Для удаления или редактирования выберите соответствующие иконки. При редактирование <b>обязательно</b> нажмите <b>сохранить</b></p>
-        <img  th:src="@{/img/4.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
-        <img  th:src="@{/img/5.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
+        <p>Это главная страница.</p>
 
-        <p class="text-center"><b>Таблица привезёное. Добавление.</b></p>
-        <p>Необходимо выбрать нужные поля, невыбранное не допускается</p>
-        <img  th:src="@{/img/6.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
-
-        <h2 class="text-center">Справка директора</h2>
-        <p>Для добавления сотрудника перейдите на вкладку <b>"Сотрудники"</b></p>
-        <img  th:src="@{/img/7.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
-        <p class="text-center"><b>Регистрация.</b></p>
-        <p>Для регистрации нажмите на...</p>
-        <img  th:src="@{/img/9.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
-        <p>Полсле придумайте имя и пароль. Имя не должно совпадать с тем что имеесть в БД</p>
-        <img  th:src="@{/img/8.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
-        <p>Для удаления нажмите </p>
-        <img  th:src="@{/img/10.png}" style="max-width: 1000px; margin: 0 auto" alt="" src="">
     </div>
 
 </section>

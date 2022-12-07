@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Комбикорм Т.Е</title>
+    <title>Бюро</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!--    icon-->
@@ -17,7 +17,7 @@
 <body>
 <div class="container text-center">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/">Комбикорм Т.Е</a>
+        <a class="navbar-brand" href="/">Бюро</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,48 +46,7 @@
                         <a class="dropdown-item" th:href="@{/concentrates/new}">Добавить концентрат</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarGrainMix" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Зерносмесь
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarGrainMix">
-                        <a class="dropdown-item" th:href="@{/grains}">Список зерносмесей</a>
-                        <a class="dropdown-item" th:href="@{/grains/new}">Добавить зерносмесь</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarCombicorm" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Комбикорм
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarCombicorm">
-                        <a class="dropdown-item" th:href="@{/combicorms}">Список комбикорма</a>
-                        <a class="dropdown-item" th:href="@{/combicorms/new}">Добавить комбикорм</a>
-                    </div>
-                </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarCatDog" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Комбикорм для питомцев
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarCatDog">
-                        <a class="dropdown-item" th:href="@{/food_for_cat_and_dog}">Список кормов для собак и котов</a>
-                        <a class="dropdown-item" th:href="@{/food_for_cat_and_dog/new}">Добавить корм</a>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarOther" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Прочее
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarOther">
-                        <a class="dropdown-item" th:href="@{/others}">Список прочего</a>
-                        <a class="dropdown-item" th:href="@{/others/new}">Добавить корм</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user">Сотрудники</a>
                 </li>

@@ -6,10 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.bliz.grain_mix.Grain;
-import ru.bliz.other.OtherKorm;
-
-import java.util.List;
 
 @Controller
 public class ConcentrateController {
