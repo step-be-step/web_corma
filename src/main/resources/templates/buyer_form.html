@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="www.thymeleaf.org" lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <title>Список привоза</title>
+    <title>Форма добавления концентрата</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-
-    <!--    icon-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -36,13 +34,13 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarConcentrate" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarInsurance" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Концентраты
+                        Страхование
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarConcentrate">
-                        <a class="dropdown-item" th:href="@{/concentrates}">Список концентратов</a>
-                        <a class="dropdown-item" th:href="@{/concentrates/new}">Добавить концентрат</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarInsurance">
+                        <a class="dropdown-item" th:href="@{/buyers}">Список страховок</a>
+                        <a class="dropdown-item" th:href="@{/buyers/new}">Добавить страховку</a>
                     </div>
                 </li>
 
@@ -50,44 +48,36 @@
                     <a class="nav-link" href="/user">Сотрудники</a>
                 </li>
             </ul>
-            <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
+            <div>
+                <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
+            </div>
         </div>
     </nav>
 
-    <div><h1>Список привезёного </h1></div>
+    <div th:if="${buyer.id==null}"><h1>Добавить страхование</h1></div>
+    <div th:unless="${buyer.id==null}"><h1>Редактировать страхование</h1></div>
 
-    <form th:action="@{/sales}" method="get">
-        <input type="text" name="filter" th:value="${filter}" placeholder="Поиск по наименованию" size="50">
-        <button type="submit" class="btn btn-primary mb-2">Поиск</button>
+    <form th:action="@{/buyers/save}" th:object="${buyer}" method="post"
+          style="max-width: 600px; margin: 0 auto">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">ФИО: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Email: </label>
+                <div class="col-sm-8">
+                    <input type="email" th:field="*{email}" class="form-control" required/>
+                </div>
+            </div>
+            </div>
+            <div class="text-center p3">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
     </form>
-
-    <div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>Наименование</th>
-                <th>Концентрат</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <th:block th:each="sale : ${listSales}">
-                <tr>
-                    <td>[[${sale.id}]]</td>
-                    <td>[[${sale.name}]]</td>
-                    <td>[[${sale.concentrate.name}]]</td>
-
-                    <td>
-                        <a th:href="@{'/sales/edit/' + ${sale.id}}"><i class="fa fa-edit"></i></a>
-                        <a th:href="@{'/sales/delete/' + ${sale.id}}"><i class="fa fa-remove"></i></a>
-                    </td>
-                </tr>
-            </th:block>
-            </tbody>
-        </table>
-    </div>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

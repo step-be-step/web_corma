@@ -2,8 +2,9 @@ package ru.bliz.everything;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.bliz.concentrate.Concentrate;
+import ru.bliz.buyer.Buyer;
 import ru.bliz.insurance.Insurance;
+import ru.bliz.user.User;
 
 import javax.persistence.*;
 
@@ -18,9 +19,12 @@ public class Everything {
 
     private String name;
 
-
     @ManyToOne
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
+
+    @ManyToOne
+    @JoinColumn(name = "buyer_id")
+    private Buyer buyer;
 
 }

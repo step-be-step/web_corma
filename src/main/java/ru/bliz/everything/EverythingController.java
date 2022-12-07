@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.bliz.buyer.Buyer;
+import ru.bliz.buyer.BuyerRepo;
 import ru.bliz.insurance.Insurance;
 import ru.bliz.insurance.InsuranceRepo;
 
@@ -19,14 +21,18 @@ public class EverythingController {
 
     @Autowired
     private InsuranceRepo insuranceRepo;
+    @Autowired
+    private BuyerRepo buyerRepo;
 
     @GetMapping("/everythings/new")
     public String showNewSaleFrom(Model model) {
         List<Insurance> listInsurances = insuranceRepo.findAll();
+        List<Buyer> listBuyers = buyerRepo.findAll();
 
         model.addAttribute("everything", new Everything());
 
         model.addAttribute("listInsurances", listInsurances);
+        model.addAttribute("listBuyers", listBuyers);
 
         return "everythings_form";
     }
@@ -60,10 +66,12 @@ public class EverythingController {
         Everything everything = everythingRepo.findById(id).get();
 
         List<Insurance> listInsurances = insuranceRepo.findAll();
+        List<Buyer> listBuyers = buyerRepo.findAll();
 
         model.addAttribute("everything", everything);
 
         model.addAttribute("listInsurances", listInsurances);
+        model.addAttribute("listBuyers", listBuyers);
 
         return "everythings_form";
     }

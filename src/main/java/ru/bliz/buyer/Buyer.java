@@ -1,4 +1,4 @@
-package ru.bliz.concentrate;
+package ru.bliz.buyer;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,24 +11,23 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class Concentrate {
+public class Buyer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
-    private float priceKg;
-    private float price25Kg;
 
-    public Concentrate(int id, String name) {
+    private String email;
+
+    public Buyer(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Concentrate(String name, float priceKg, float price25Kg) {
+    public Buyer(String name, String email) {
         this.name = name;
-        this.priceKg = priceKg;
-        this.price25Kg = price25Kg;
+        this.email = email;
     }
 }

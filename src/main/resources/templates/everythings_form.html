@@ -29,8 +29,8 @@
                         Привезёное
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/everythings}">Список привезённое </a>
-                        <a class="dropdown-item" th:href="@{/everythings/new}">Добавить список </a>
+                        <a class="dropdown-item" th:href="@{/everythings}">Список зделок </a>
+                        <a class="dropdown-item" th:href="@{/everythings/new}">Добавить зделку </a>
                     </div>
                 </li>
 
@@ -53,7 +53,7 @@
         </div>
     </nav>
 
-    <div th:if="${everything.id==null}"><h1>Добавить всего</h1></div>
+    <div th:if="${everything.id==null}"><h1>Добавить зделку</h1></div>
     <div th:unless="${everything.id==null}"><h1>Редактировать привезёное</h1></div>
 
     <form th:action="@{/everythings/save}" th:object="${everything}" method="post"
@@ -77,6 +77,17 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">ФИО покупателя: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{buyer}" class="form-control" required>
+                        <th:block th:each="buyer : ${listBuyers}">
+                            <option th:text="${buyer.name}" th:value="${buyer.id}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
 
             <div class="text-center p-3">
                 <button type="submit" class="btn btn-primary">Сохранить</button>

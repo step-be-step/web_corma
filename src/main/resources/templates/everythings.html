@@ -68,6 +68,7 @@
                 <th>ID</th>
                 <th>Наименование</th>
                 <th>Страхование</th>
+                <th>ФИО покупателя и email</th>
                 <th></th>
             </tr>
             </thead>
@@ -77,6 +78,7 @@
                     <td>[[${everything.id}]]</td>
                     <td>[[${everything.name}]]</td>
                     <td>[[${everything.insurance.name}]]</td>
+                    <td>[[${everything.buyer.name}]] - [[${everything.buyer.email}]]</td>
 
                     <td>
                         <a th:href="@{'/everythings/edit/' + ${everything.id}}"><i class="fa fa-edit"></i></a>

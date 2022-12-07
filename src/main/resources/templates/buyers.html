@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Форма добавления концентрата</title>
+    <title>Список концентратов</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+
+    <!--    icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -25,22 +28,22 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSeal" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        Привезённое
+                        Список
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/sales}">Список привезённое </a>
-                        <a class="dropdown-item" th:href="@{/sales/new}">Добавить список </a>
+                        <a class="dropdown-item" th:href="@{/everythings}">Список всего </a>
+                        <a class="dropdown-item" th:href="@{/everythings/new}">Добавить список </a>
                     </div>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarConcentrate" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarInsurance" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Концентраты
+                        Страхование
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarConcentrate">
-                        <a class="dropdown-item" th:href="@{/concentrates}">Список концентратов</a>
-                        <a class="dropdown-item" th:href="@{/concentrates/new}">Добавить концентрат</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarInsurance">
+                        <a class="dropdown-item" th:href="@{/buyers}">Список страховок</a>
+                        <a class="dropdown-item" th:href="@{/buyers/new}">Добавить страховку</a>
                     </div>
                 </li>
 
@@ -54,36 +57,40 @@
         </div>
     </nav>
 
-    <div th:if="${concentrate.id==null}"><h1>Добавить концентрат</h1></div>
-    <div th:unless="${concentrate.id==null}"><h1>Редактировать концентрат</h1></div>
+    <div><h1>Список страхование</h1></div>
 
-    <form th:action="@{/concentrates/save}" th:object="${concentrate}" method="post"
-          style="max-width: 600px; margin: 0 auto">
-        <div class="m-3">
-            <div class="form-group row">
-                <label class="col-form-label col-sm-4">Наименование: </label>
-                <div class="col-sm-8">
-                    <input type="text" th:field="*{name}" class="form-control" required/>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-form-label col-sm-4">Цена за кг: </label>
-                <div class="col-sm-8">
-                    <input type="number" step="0.1" th:field="*{priceKg}" class="form-control" required/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-form-label col-sm-4">Цена за мешок(25 кг): </label>
-                <div class="col-sm-8">
-                    <input type="number" step="0.1" th:field="*{price25Kg}" class="form-control" required/>
-                </div>
-            </div>
-            <div class="text-center p3">
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </div>
-        </div>
+    <form th:action="@{/buyer}" method="get">
+        <input type="text" name="filter" th:value="${filter}" placeholder="Поиск по наименованию" size="50">
+        <button type="submit" class="btn btn-primary mb-2">Поиск</button>
     </form>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Наименование</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="buyer : ${listBuyers}">
+                <tr>
+                    <td>[[${buyer.id}]]</td>
+                    <td>[[${buyer.name}]]</td>
+                    <td>[[${buyer.email}]]</td>
+                    <td>
+                        <a th:href="@{'/buyers/edit/' + ${buyer.id}}"><i class="fa fa-edit"></i></a>
+                        &nbsp;
+                        <a th:href="@{'/buyers/delete/' + ${buyer.id}}"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
