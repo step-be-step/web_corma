@@ -72,7 +72,7 @@
 
     </nav>
 
-    <div th:if="${buyer.id==null}"><h1>Добавить страхование</h1></div>
+    <div th:if="${buyer.id==null}"><h1>Добавить клиента</h1></div>
     <div th:unless="${buyer.id==null}"><h1>Редактировать страхование</h1></div>
 
     <form th:action="@{/buyers/save}" th:object="${buyer}" method="post"
