@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Бюро</title>
+    <title>Список концентратов</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+
+    <!--    icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -51,26 +54,42 @@
             <div>
                 <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
             </div>
-            <div class="col-sm-1">
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" class="alert alert-warning" value="Выйти"/>
-                </form>
-            </div>
-
         </div>
     </nav>
 
+    <div><h1>Список страхование</h1></div>
 
-</div>
+    <form th:action="@{/insurance}" method="get">
+        <input type="text" name="filter" th:value="${filter}" placeholder="Поиск по наименованию" size="50">
+        <button type="submit" class="btn btn-primary mb-2">Поиск</button>
+    </form>
 
-<section>
-    <div class="container">
-        <h2 class="text-center">ВАЖНО</h2>
-        <p>Это главная страница.</p>
-
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Наименование</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="insurance : ${listInsurances}">
+                <tr>
+                    <td>[[${insurance.id}]]</td>
+                    <td>[[${insurance.name}]]</td>
+                    <td>
+                        <a th:href="@{'/insurances/edit/' + ${insurance.id}}"><i class="fa fa-edit"></i></a>
+                        &nbsp;
+                        <a th:href="@{'/insurances/delete/' + ${insurance.id}}"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
     </div>
 
-</section>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -81,5 +100,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

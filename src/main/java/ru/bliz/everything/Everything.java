@@ -1,4 +1,4 @@
-package ru.bliz.sales;
+package ru.bliz.everything;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-public class Sale {
+public class Everything {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +18,6 @@ public class Sale {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "concentrate_id")
-    private Concentrate concentrate;
 
     @ManyToOne
     @JoinColumn(name = "insurance_id")

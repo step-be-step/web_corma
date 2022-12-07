@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Бюро</title>
+    <title>Форма добавления концентрата</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 
     <!-- Bootstrap CSS -->
@@ -25,11 +25,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarSeal" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        Список
+                        Привезённое
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarSeal">
-                        <a class="dropdown-item" th:href="@{/everythings}">Список всего </a>
-                        <a class="dropdown-item" th:href="@{/everythings/new}">Добавить список </a>
+                        <a class="dropdown-item" th:href="@{/sales}">Список привезённое </a>
+                        <a class="dropdown-item" th:href="@{/sales/new}">Добавить список </a>
                     </div>
                 </li>
 
@@ -51,26 +51,29 @@
             <div>
                 <i th:inline="text">Привет [[${#httpServletRequest.remoteUser}]]!</i>
             </div>
-            <div class="col-sm-1">
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" class="alert alert-warning" value="Выйти"/>
-                </form>
-            </div>
-
         </div>
     </nav>
 
+    <div th:if="${insurance.id==null}"><h1>Добавить страхование</h1></div>
+    <div th:unless="${insurance.id==null}"><h1>Редактировать страхование</h1></div>
 
+    <form th:action="@{/insurances/save}" th:object="${insurance}" method="post"
+          style="max-width: 600px; margin: 0 auto">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-4">Наименование: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required/>
+                </div>
+            </div>
+
+            </div>
+            <div class="text-center p3">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </form>
 </div>
-
-<section>
-    <div class="container">
-        <h2 class="text-center">ВАЖНО</h2>
-        <p>Это главная страница.</p>
-
-    </div>
-
-</section>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -81,5 +84,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
         integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+
 </body>
 </html>
